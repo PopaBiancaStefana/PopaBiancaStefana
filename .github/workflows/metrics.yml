@@ -28,8 +28,17 @@ jobs:
           config_twemoji: yes
           config_timezone: Europe/Bucharest
 
+          # Languages plugin
           plugin_languages: yes
-          plugin_languages_details: percentage
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_limit: 12
+          plugin_languages_indepth: yes
+          plugin_languages_details: percentage, bytes-size, lines
+          plugin_languages_skipped: PopaBiancaStefana/Apartment-Explorer-AR-app
+
+          # “Recently used” tuning
+          plugin_languages_recent_load: 600
+          plugin_languages_recent_days: 30
 
           # Code plugin
           plugin_code: yes
@@ -44,10 +53,13 @@ jobs:
 
           # Calendar plugin
           plugin_calendar: yes
-          plugin_calendar_limit: 3
-  
-          plugin_activity: no
-          plugin_contributors: no
+          plugin_calendar_limit: 4
+
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+          plugin_activity: no # currently broken
+          plugin_contributors: no # currently broken
 
           # Wakatime plugin
           plugin_wakatime: yes
@@ -57,11 +69,10 @@ jobs:
           plugin_wakatime_repositories_visibility: all
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_user: current
-  
-          plugin_habits: no
-  
-          plugin_achievements: no
-  
+
+          plugin_habits: no # currently broken
+          plugin_achievements: no  # currently broken
+
           # Notable plugin
           plugin_notable: yes
           plugin_notable_from: organization
@@ -85,20 +96,20 @@ jobs:
 
           filename: github-metrics.svg
 
-      - name: Skyline
-        uses: lowlighter/metrics@master
-        with:
-          token: ${{ secrets.METRICS_READ_TOKEN }}
-          committer_token: ${{ secrets.GITHUB_TOKEN }}
-    
-          use_prebuilt_image: yes
-          plugin_skyline_compatibility: yes
-          plugins_errors_fatal: no 
-      
-          user: ${{ github.repository_owner }}
-          base: ""
-          plugin_skyline: yes
-          plugin_skyline_year: 2025
-          plugin_skyline_frames: 60
-          plugin_skyline_quality: 0.5
-          filename: metrics-skyline.svg
+      # - name: Skyline
+      #   uses: lowlighter/metrics@master
+      #   with:
+      #     token: ${{ secrets.METRICS_READ_TOKEN }}
+      #     committer_token: ${{ secrets.GITHUB_TOKEN }}
+
+      #     use_prebuilt_image: yes
+      #     plugin_skyline_compatibility: yes
+      #     plugins_errors_fatal: no
+
+      #     user: ${{ github.repository_owner }}
+      #     base: ""
+      #     plugin_skyline: yes
+      #     plugin_skyline_year: 2025
+      #     plugin_skyline_frames: 60
+      #     plugin_skyline_quality: 0.5
+      #     filename: metrics-skyline.svg
