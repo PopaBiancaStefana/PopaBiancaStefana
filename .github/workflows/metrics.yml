@@ -21,8 +21,6 @@ jobs:
 
           use_prebuilt_image: yes
           plugins_errors_fatal: yes
-          retries: 3
-          retries_delay: 30
 
           user: ${{ github.repository_owner }}
           template: classic
@@ -50,15 +48,11 @@ jobs:
   
           # Activity plugin
           plugin_activity: yes
-          plugin_activity_days: 100
-          plugin_activity_filter: all
-          plugin_activity_limit: 10
-          plugin_activity_load: 300
-          plugin_activity_visibility: all
+          plugin_activity_visibility: public
+          plugin_activity_filter: issue, pr, review, release, fork, star
+          plugin_activity_days: 30
 
-          # Contributors plugin
-          plugin_contributors: yes
-          plugin_contributors_contributions: yes
+          plugin_contributors: no
 
           # Wakatime plugin
           plugin_wakatime: yes
@@ -69,18 +63,10 @@ jobs:
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_user: current
   
-          # Habits (charts + facts)
-          plugin_habits: yes
-          plugin_habits_facts: yes
-          plugin_habits_charts: yes
-
-          # Achievements
-          plugin_achievements: yes
-          plugin_achievements_display: detailed
-          plugin_achievements_secrets: yes
-          plugin_achievements_ignored: manager
-          plugin_achievements_threshold: C
-
+          plugin_habits: no
+  
+          plugin_achievements: no
+  
           # Notable plugin
           plugin_notable: yes
           plugin_notable_from: organization
@@ -113,8 +99,6 @@ jobs:
           use_prebuilt_image: yes
           plugin_skyline_compatibility: yes
           plugins_errors_fatal: yes  
-          retries: 3
-          retries_delay: 30
       
           user: ${{ github.repository_owner }}
           base: ""
