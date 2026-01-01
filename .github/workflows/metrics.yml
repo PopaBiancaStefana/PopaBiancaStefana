@@ -20,7 +20,7 @@ jobs:
           committer_token: ${{ secrets.GITHUB_TOKEN }}
 
           use_prebuilt_image: yes
-          plugins_errors_fatal: yes
+          plugins_errors_fatal: no
 
           user: ${{ github.repository_owner }}
           template: classic
@@ -46,12 +46,7 @@ jobs:
           plugin_calendar: yes
           plugin_calendar_limit: 3
   
-          # Activity plugin
-          plugin_activity: yes
-          plugin_activity_visibility: public
-          plugin_activity_filter: issue, pr, review, release, fork, star
-          plugin_activity_days: 30
-
+          plugin_activity: no
           plugin_contributors: no
 
           # Wakatime plugin
@@ -98,7 +93,7 @@ jobs:
     
           use_prebuilt_image: yes
           plugin_skyline_compatibility: yes
-          plugins_errors_fatal: yes  
+          plugins_errors_fatal: no 
       
           user: ${{ github.repository_owner }}
           base: ""
